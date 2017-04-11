@@ -73,11 +73,12 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("HERE")
         let cell:UITableViewCell = self.theTableView.dequeueReusableCell(withIdentifier: "searchResultsCell")! as UITableViewCell
         let theCourse = sampleData[indexPath.row]
         let theLabel = cell.contentView.viewWithTag(1) as! UILabel
+        let hiddenCodeLabel = cell.contentView.viewWithTag(2) as! UILabel
         
+        hiddenCodeLabel.text = theCourse.Code
         theLabel.text = theCourse.Title
         
         return cell
@@ -91,6 +92,21 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         self.sampleData = []
         getResults()
         theTableView.reloadData()
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let sendingCell = sender as! UITableViewCell
+        
+        let destVC = segue.destination as! courseDetailViewController
+        
+        let codeLabel = sendingCell.contentView.viewWithTag(2) as! UILabel
+        
+        destVC.incomingCourseCode = codeLabel.text!
+        
+        
+        
+        
         
     }
     

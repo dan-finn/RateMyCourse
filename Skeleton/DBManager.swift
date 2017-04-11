@@ -102,6 +102,7 @@ class DBManager {
         let scanExpression = AWSDynamoDBScanExpression()
         var scanResults = [Course]()
         var fetched = false
+        
         switch filter {
         case .title:
             scanExpression.filterExpression = "contains(Title, :val)"
@@ -112,10 +113,13 @@ class DBManager {
         case .credits:
             scanExpression.filterExpression = "Credits = :val"
             break
-            
+        case .department:
+            scanExpression.filterExpression = "Code BEGINS :val"
+        
         default:
             break
         }
+        
         scanExpression.expressionAttributeValues = [":val": query]
         dbMapper?.scan(Course.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
             if let error = task.error as? NSError {

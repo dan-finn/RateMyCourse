@@ -97,6 +97,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL8-dH-Ist">
+                                                    <rect key="frame" x="227" y="11" width="39" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -156,6 +163,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="TITLE" id="P8u-FY-cks"/>
+                    <connections>
+                        <outlet property="codeLabel" destination="7oW-Vd-cwh" id="ofB-bz-XHn"/>
+                        <outlet property="courseNavTitle" destination="P8u-FY-cks" id="aQH-19-REW"/>
+                        <outlet property="descriptionArea" destination="HpN-hh-0Wc" id="f06-Xi-ruz"/>
+                        <outlet property="titleLabel" destination="oD1-qM-ZdC" id="Qrz-Fc-XSU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6xP-um-0gg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

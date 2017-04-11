@@ -9,9 +9,21 @@
 import UIKit
 
 class courseDetailViewController: UIViewController {
+    
+    var incomingCourseCode = ""
 
+    @IBOutlet weak var courseNavTitle: UINavigationItem!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var codeLabel: UILabel!
+    @IBOutlet weak var descriptionArea: UITextView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        descriptionArea.isEditable = false
+        print(incomingCourseCode)
+    
+        
 
         // Do any additional setup after loading the view.
     }
@@ -19,6 +31,11 @@ class courseDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
 
