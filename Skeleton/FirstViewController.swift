@@ -38,9 +38,15 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         departmentPicker.dataSource = self
         departmentPicker.delegate = self
         
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(singleTap)
 
         
         
+    }
+    
+    func dismissKeyboard(){
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {

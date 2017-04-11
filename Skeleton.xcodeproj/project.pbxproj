@@ -235,6 +235,7 @@
 				TargetAttributes = {
 					611A84441E9ADFC20058891D = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P2HPYX753R;
 						ProvisioningStyle = Automatic;
 					};
 					611A845A1E9ADFC20058891D = {
@@ -508,6 +509,7 @@
 			baseConfigurationReference = C2C2E44EA20B466FF50F1831 /* Pods-Skeleton.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P2HPYX753R;
 				INFOPLIST_FILE = Skeleton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JohnGarza.Skeleton;
@@ -521,6 +523,7 @@
 			baseConfigurationReference = AB7CA16219C2F455AB6E484C /* Pods-Skeleton.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P2HPYX753R;
 				INFOPLIST_FILE = Skeleton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JohnGarza.Skeleton;
