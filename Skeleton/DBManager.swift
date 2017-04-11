@@ -74,6 +74,7 @@ class DBManager {
     }
     
     
+    // depreciated
     func searchCourses(title: String ) -> [Course] {
         let scanExpression = AWSDynamoDBScanExpression();
         scanExpression.filterExpression = "contains(Title,:val)"
@@ -97,6 +98,7 @@ class DBManager {
         return scanResults
         
     }
+    // end depreciated
     
     func scanCourses(query: String, filter: filterTypes ) -> [Course]? {
         let scanExpression = AWSDynamoDBScanExpression()
@@ -121,6 +123,7 @@ class DBManager {
         }
         
         scanExpression.expressionAttributeValues = [":val": query]
+        
         dbMapper?.scan(Course.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
             if let error = task.error as? NSError {
                 print("The request failed. Error: \(error)")

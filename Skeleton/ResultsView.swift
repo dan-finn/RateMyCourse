@@ -96,15 +96,18 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let sendingCell = sender as! UITableViewCell
         
-        let destVC = segue.destination as! courseDetailViewController
+        if segue.identifier == "toCourseDetailView" {
         
-        let codeLabel = sendingCell.contentView.viewWithTag(2) as! UILabel
+            let sendingCell = sender as! UITableViewCell
         
-        destVC.incomingCourseCode = codeLabel.text!
+            let destVC = segue.destination as! courseDetailViewController
+            
+            let codeLabel = sendingCell.contentView.viewWithTag(2) as! UILabel
         
+            destVC.incomingCourseCode = codeLabel.text!
         
+        }
         
         
         

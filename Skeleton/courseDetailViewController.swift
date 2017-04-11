@@ -12,18 +12,46 @@ class courseDetailViewController: UIViewController {
     
     var incomingCourseCode = ""
 
+    let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
+    
+    
     @IBOutlet weak var courseNavTitle: UINavigationItem!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var descriptionArea: UITextView!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionArea.isEditable = false
         print(incomingCourseCode)
-    
+        self.titleLabel.preferredMaxLayoutWidth = self.view.frame.width
+        self.titleLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        self.titleLabel.numberOfLines = 2
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async {
+            
+        if let fetchedCourse = self.dbAccessor.getCourse(courseCode: self.incomingCourseCode) {
+            
+            DispatchQueue.main.async {
+                
+            
+            self.courseNavTitle.title = fetchedCourse.Title
+            self.titleLabel.text = fetchedCourse.Title
+            self.titleLabel.sizeToFit()
+            self.codeLabel.text = fetchedCourse.Code
+            self.descriptionArea.text = fetchedCourse.Description
+                
+            }
+        }
+            
+        print("lol")
+    }
         
+        
+        
+        
+
 
         // Do any additional setup after loading the view.
     }
