@@ -100,14 +100,18 @@ class DBManager {
     }
     // end depreciated
     
-    func scanCourses(query: String, filter: filterTypes ) -> [Course]? {
+    func scanCourses(query: String, focuser: String, filter: filterTypes ) -> [Course]? {
         let scanExpression = AWSDynamoDBScanExpression()
         var scanResults = [Course]()
         var fetched = false
         
         switch filter {
         case .title:
+            if focuser != "" {
+            scanExpression.filterExpression = "contains(Title, :val) AND begins_with(Code, :val1)"
+            } else {
             scanExpression.filterExpression = "contains(Title, :val)"
+            }
             break
         case .code:
             scanExpression.filterExpression = "Code = :val"
@@ -122,7 +126,11 @@ class DBManager {
             break
         }
         
-        scanExpression.expressionAttributeValues = [":val": query]
+        if focuser != "" {
+        scanExpression.expressionAttributeValues = [":val": query, ":val1": focuser]
+        } else {
+            scanExpression.expressionAttributeValues = [":val": query]
+        }
         
         dbMapper?.scan(Course.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
             if let error = task.error as? NSError {

@@ -148,6 +148,20 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             let searchText = self.searchBar.text
             let destVC = segue.destination as! ResultsView
             destVC.querySent = searchText!
+            switch(self.schoolTextField.text!){
+            case "All" :
+                destVC.focuserSent = ""
+                break
+            case "ArtSci":
+                destVC.focuserSent = "L"
+                break
+            case "Engineering":
+                destVC.focuserSent = "E"
+                break
+            default:
+                break
+            
+            }
         }
     }
 

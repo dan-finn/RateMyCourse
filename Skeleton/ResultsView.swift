@@ -15,6 +15,7 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var searchTitle: UINavigationItem!
     @IBOutlet weak var dataResults: UILabel!
     var querySent = ""
+    var focuserSent = ""
     let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
     let searchResults = [Course]()
     var sampleData: [Course] = []
@@ -50,9 +51,9 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func getResults(){
-        
+        print("Scanning with query \(self.querySent) and with focuser \(self.focuserSent)")
         DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async{
-        if let fetchedResults = self.dbAccessor.scanCourses(query: self.querySent, filter: .title){
+        if let fetchedResults = self.dbAccessor.scanCourses(query: self.querySent, focuser: self.focuserSent, filter: .title){
             for course in fetchedResults {
                 self.sampleData.append(course)
                 self.theTableView.reloadData()
