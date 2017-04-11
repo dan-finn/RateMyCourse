@@ -14,6 +14,7 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var theTableView: UITableView!
     @IBOutlet weak var searchTitle: UINavigationItem!
     @IBOutlet weak var dataResults: UILabel!
+    @IBOutlet weak var notFoundImage: UIImageView!
     var querySent = ""
     var focuserSent = ""
     let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
@@ -62,15 +63,16 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 self.spinner.isHidden = true
-                self.theTableView.isHidden = false
+                self.theTableView.isHidden = self.sampleData.count > 0 ? false : true
+                self.notFoundImage.isHidden = self.sampleData.count > 0 ? true : false
                 self.theTableView.reloadData()
+                
             }
             
             
         }
         }
-        
-    
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,10 +106,12 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.sampleData = []
+        //self.sampleData = []
+        if (self.sampleData.count == 0){
         self.spinner.isHidden = false
        self.spinner.startAnimating()
         getResults()
+        }
         theTableView.reloadData()
        // self.spinner.stopAnimating()
        // self.theTableView.isHidden = false

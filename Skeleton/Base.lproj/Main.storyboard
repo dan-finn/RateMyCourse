@@ -64,7 +64,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="first" selectedImage="Bionoculars" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="SEARCH" id="PGB-nS-Bdc"/>
                     <connections>
                         <outlet property="departmentPicker" destination="F3J-c0-4eG" id="tth-ZH-gSX"/>
@@ -98,7 +98,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p7h-Ho-NjI" id="jWM-tP-Gxy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL8-dH-Ist">
@@ -127,11 +127,20 @@
                                 <rect key="frame" x="177" y="323" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NotFound" translatesAutoresizingMaskIntoConstraints="NO" id="cgL-mb-6CD">
+                                <rect key="frame" x="157" y="304" width="60" height="60"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.20000000000000001" height="0.20000000000000001"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cgL-mb-6CD" firstAttribute="centerX" secondItem="jqs-gw-IoE" secondAttribute="centerX" id="DSZ-Fr-YBq"/>
+                            <constraint firstItem="cgL-mb-6CD" firstAttribute="centerY" secondItem="jqs-gw-IoE" secondAttribute="centerY" id="rkh-Fr-hr0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="QUERY" id="JkN-Oa-mka"/>
                     <connections>
+                        <outlet property="notFoundImage" destination="cgL-mb-6CD" id="qYS-2Y-esq"/>
                         <outlet property="searchTitle" destination="JkN-Oa-mka" id="ZtD-Im-NRn"/>
                         <outlet property="spinner" destination="yRM-nx-iVw" id="a2q-n1-isq"/>
                         <outlet property="theTableView" destination="oih-aE-WOO" id="SWF-We-9Qa"/>
@@ -200,7 +209,7 @@
         <scene sceneID="6U8-85-DvE">
             <objects>
                 <navigationController id="MBA-im-mY7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="ui3-eP-uoP"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="Bionoculars" selectedImage="Bionoculars" id="ui3-eP-uoP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="twj-Im-ZEh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -217,7 +226,7 @@
         <scene sceneID="Lr4-rR-fiE">
             <objects>
                 <navigationController id="aMf-lK-6fg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="0Mn-zF-nv4"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" selectedImage="Profile" id="0Mn-zF-nv4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XeR-7D-gjb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -284,7 +293,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" selectedImage="Profile" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" id="LML-aU-yaN"/>
                     <connections>
                         <outlet property="nameLabel" destination="2LO-em-k5W" id="xQI-i8-VZJ"/>
@@ -316,7 +325,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Bionoculars" width="30" height="30"/>
+        <image name="NotFound" width="60" height="60"/>
+        <image name="Profile" width="30" height="30"/>
         <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
     </resources>
 </document>
