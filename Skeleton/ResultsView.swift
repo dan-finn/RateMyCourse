@@ -10,6 +10,7 @@ import UIKit
 
 class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var theTableView: UITableView!
     @IBOutlet weak var searchTitle: UINavigationItem!
     @IBOutlet weak var dataResults: UILabel!
@@ -50,11 +51,24 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func getResults(){
         
-        if let fetchedResults = dbAccessor.scanCourses(query: querySent, filter: .title){
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async{
+        if let fetchedResults = self.dbAccessor.scanCourses(query: self.querySent, filter: .title){
             for course in fetchedResults {
                 self.sampleData.append(course)
+                self.theTableView.reloadData()
             }
+            
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                self.spinner.isHidden = true
+                self.theTableView.isHidden = false
+                self.theTableView.reloadData()
+            }
+            
+            
         }
+        }
+        
     
     }
     
@@ -90,8 +104,12 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.sampleData = []
+        self.spinner.isHidden = false
+       self.spinner.startAnimating()
         getResults()
         theTableView.reloadData()
+       // self.spinner.stopAnimating()
+       // self.theTableView.isHidden = false
         
     }
     
