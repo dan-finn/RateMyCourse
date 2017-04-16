@@ -11,6 +11,7 @@
 		376B4E4B1E9C3BBA00D7DDC7 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */; };
 		376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4C1E9C3C2100D7DDC7 /* Course.swift */; };
 		376B4E511E9C49EF00D7DDC7 /* courseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */; };
+		37AFE3C71EA415E800F80FF7 /* createReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFE3C61EA415E800F80FF7 /* createReviewViewController.swift */; };
 		611A84491E9ADFC20058891D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A84481E9ADFC20058891D /* AppDelegate.swift */; };
 		611A844B1E9ADFC20058891D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A844A1E9ADFC20058891D /* FirstViewController.swift */; };
 		611A844D1E9ADFC20058891D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A844C1E9ADFC20058891D /* SecondViewController.swift */; };
@@ -43,6 +44,7 @@
 		376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		376B4E4C1E9C3C2100D7DDC7 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseDetailViewController.swift; sourceTree = "<group>"; };
+		37AFE3C61EA415E800F80FF7 /* createReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createReviewViewController.swift; sourceTree = "<group>"; };
 		611A84451E9ADFC20058891D /* Skeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		611A84481E9ADFC20058891D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		611A844A1E9ADFC20058891D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */,
 				376B4E4C1E9C3C2100D7DDC7 /* Course.swift */,
 				376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */,
+				37AFE3C61EA415E800F80FF7 /* createReviewViewController.swift */,
 			);
 			path = Skeleton;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37AFE3C71EA415E800F80FF7 /* createReviewViewController.swift in Sources */,
 				376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */,
 				376B4E4B1E9C3BBA00D7DDC7 /* DBManager.swift in Sources */,
 				611A844D1E9ADFC20058891D /* SecondViewController.swift in Sources */,

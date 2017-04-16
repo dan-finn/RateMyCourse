@@ -66,6 +66,13 @@ class courseDetailViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newReviewSegue" {
+            let destVC = segue.destination as! createReviewViewController
+            destVC.incomingCourseTitle = titleLabel.text!
+            
+        }
+    }
 
     /*
     // MARK: - Navigation
