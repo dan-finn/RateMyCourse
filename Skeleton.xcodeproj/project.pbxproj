@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2058CE3374E30452F661A70F /* Pods_Skeleton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59D09B1F88F736C86AAB33B /* Pods_Skeleton.framework */; };
+		3700C1731EA94EFB00EC5FF3 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700C1721EA94EFB00EC5FF3 /* Review.swift */; };
+		3700C1751EA9636E00EC5FF3 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700C1741EA9636E00EC5FF3 /* ReviewsView.swift */; };
 		376B4E4B1E9C3BBA00D7DDC7 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */; };
 		376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4C1E9C3C2100D7DDC7 /* Course.swift */; };
 		376B4E511E9C49EF00D7DDC7 /* courseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3700C1721EA94EFB00EC5FF3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		3700C1741EA9636E00EC5FF3 /* ReviewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		376B4E4C1E9C3C2100D7DDC7 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseDetailViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				376B4E4C1E9C3C2100D7DDC7 /* Course.swift */,
 				376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */,
 				37AFE3C61EA415E800F80FF7 /* createReviewViewController.swift */,
+				3700C1721EA94EFB00EC5FF3 /* Review.swift */,
+				3700C1741EA9636E00EC5FF3 /* ReviewsView.swift */,
 			);
 			path = Skeleton;
 			sourceTree = "<group>";
@@ -355,7 +361,9 @@
 			files = (
 				37AFE3C71EA415E800F80FF7 /* createReviewViewController.swift in Sources */,
 				376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */,
+				3700C1731EA94EFB00EC5FF3 /* Review.swift in Sources */,
 				376B4E4B1E9C3BBA00D7DDC7 /* DBManager.swift in Sources */,
+				3700C1751EA9636E00EC5FF3 /* ReviewsView.swift in Sources */,
 				611A844D1E9ADFC20058891D /* SecondViewController.swift in Sources */,
 				611A84791E9AF8FE0058891D /* ResultsView.swift in Sources */,
 				611A84491E9ADFC20058891D /* AppDelegate.swift in Sources */,

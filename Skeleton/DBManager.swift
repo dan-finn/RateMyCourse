@@ -149,6 +149,29 @@ class DBManager {
         
     }
     
+    func scanReviews(code: String) -> [Review]? {
+        let scanExpression = AWSDynamoDBScanExpression()
+        var scanResults = [Review]()
+        var fetched = false
+        scanExpression.filterExpression = "Code = :val"
+        scanExpression.expressionAttributeValues = [":val": code]
+        
+        dbMapper?.scan(Review.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+            } else if let paginatedOutput = task.result {
+                for review in paginatedOutput.items as! [Review] {
+                    scanResults.append(review)
+                }
+            }
+            fetched = true;
+            return nil
+        })
+        while (!fetched){}
+        return scanResults
+    
+    }
+    
     func addCourse(course: Course) -> Bool {
         
         _ = false
@@ -165,6 +188,21 @@ class DBManager {
         
         return (success != nil)
     }
+    
+    func addReview(review: Review) -> Bool {
+        let success = dbMapper?.save(review).continueWith(block: { (task: AWSTask<AnyObject>! ) -> Bool? in
+            if let error = task.error as? NSError {
+                print("Save request failed with error: \(error)")
+                return nil;
+            } else {
+                return true
+                
+            }
+        })
+        
+        return (success != nil)
+    }
+
     
     
 }

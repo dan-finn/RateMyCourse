@@ -70,7 +70,13 @@ class courseDetailViewController: UIViewController {
         if segue.identifier == "newReviewSegue" {
             let destVC = segue.destination as! createReviewViewController
             destVC.incomingCourseTitle = titleLabel.text!
+            destVC.incomingCourseCode = codeLabel.text!
             
+        }
+        
+        if segue.identifier == "toReviewView" {
+            let destVC = segue.destination as! ReviewsView
+            destVC.incomingCourseCode = codeLabel.text!
         }
     }
 

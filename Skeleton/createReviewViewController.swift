@@ -15,6 +15,9 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     let placeHolderText = "Insert comments... (optional)"
     
     var incomingCourseTitle = ""
+    var incomingCourseCode = ""
+    
+    let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
    
     @IBOutlet weak var profTextField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
@@ -50,6 +53,52 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         self.dismiss(animated: true, completion: nil)
     
     }
+    
+    func closeModalViewFromAlert(alert: UIAlertAction!){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func postReview(){
+        let new_review = Review()
+        
+        new_review?.Code = incomingCourseCode
+       
+        /*if (reviewTextView.text != placeHolderText){
+            new_review?.comments = reviewTextView.text
+        }*/
+        
+        new_review?.comments = reviewTextView.text
+        
+        var overall = 0
+        var grading = 0
+        var workload = 0
+        overall = Int(overallRatingSlider.value)
+        grading = Int(gradingDifSlider.value)
+        workload = Int(workloadSlider.value)
+        
+        if (overall == 0 || grading == 0 || workload == 0){
+            return
+        }
+        
+        guard let professors = profTextField.text else {return}
+        
+        new_review?.professors = professors
+        new_review?.overall = overall
+        new_review?.grading = grading
+        new_review?.workload = workload
+        new_review?.id = UUID().uuidString
+        new_review?.user_id = 1
+        DispatchQueue.global(qos: .userInitiated).async{
+        print(self.dbAccessor.addReview(review: new_review!))
+        }
+        let alertControl = UIAlertController(title: "Review Posted", message: "Review sent to database!", preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(title: "OKAY", style: .default, handler: closeModalViewFromAlert)
+        alertControl.addAction(alertAction)
+        present(alertControl, animated: true, completion: nil)
+    }
+    
+    
     
     
     @IBAction func updateLabel(_ sender: UISlider) {
