@@ -25,4 +25,6 @@ target :'Skeleton' do
     pod 'AWSSimpleDB'
     pod 'AWSSNS'
     pod 'AWSSQS'
+    pod 'CryptoSwift'
+
 end

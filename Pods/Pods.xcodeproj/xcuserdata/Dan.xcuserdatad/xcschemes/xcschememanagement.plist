@@ -119,6 +119,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CryptoSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Skeleton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -142,12 +147,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1884F2014A283EF7A594D87B51A912AB</key>
+		<key>2F5F8BD18BD465CC77CEA7A3DC2ADBD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F5F8BD18BD465CC77CEA7A3DC2ADBD4</key>
+		<key>30CC09A9B2EBBDECCBB19F71EB0753C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -168,6 +173,16 @@
 			<true/>
 		</dict>
 		<key>609465C4FB81C3DE0AB74E2CDFAA0B16</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>65A97218F5297D9F24B22D7033CA9D1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BB1C1403B2419F911818DA8413FDA07</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -238,11 +253,6 @@
 			<true/>
 		</dict>
 		<key>E1BEB1A235C18934076838ED6ED9FFE6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F928C424016F55635107D001D00562D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

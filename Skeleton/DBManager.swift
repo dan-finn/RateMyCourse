@@ -69,6 +69,29 @@ class DBManager {
         return grabbedCourse
     }
     
+    func getUser(Username: String) -> User? {
+        var fetchComplete = false
+        var fetchedUser: User?
+        dbMapper?.load(User.self, hashKey: Username, rangeKey: nil).continueWith(block: { (task:AWSTask<AnyObject>!) -> User? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+                return nil
+            } else if let resultUser = task.result as? User {
+                fetchedUser = resultUser
+            }
+            fetchComplete = true
+            return nil
+            
+        })
+        
+        // block until the fetch is complete
+        while(!fetchComplete){}
+        return fetchedUser
+
+        
+    }
+    
+    
     func getMapperObject() -> AWSDynamoDBObjectMapper {
         return self.dbMapper!
     }
@@ -191,6 +214,20 @@ class DBManager {
     
     func addReview(review: Review) -> Bool {
         let success = dbMapper?.save(review).continueWith(block: { (task: AWSTask<AnyObject>! ) -> Bool? in
+            if let error = task.error as? NSError {
+                print("Save request failed with error: \(error)")
+                return nil;
+            } else {
+                return true
+                
+            }
+        })
+        
+        return (success != nil)
+    }
+    
+    func addUser(user: User) -> Bool {
+        let success = dbMapper?.save(user).continueWith(block: { (task: AWSTask<AnyObject>! ) -> Bool? in
             if let error = task.error as? NSError {
                 print("Save request failed with error: \(error)")
                 return nil;

@@ -40,7 +40,14 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         profTextField.placeholder = "Prof 1, Prof 2, Prof 3"
         reviewTextView.layer.borderColor = UIColor.lightGray.cgColor
         reviewTextView.textColor = UIColor.lightGray
-
+        
+        let isSignedIn = UserDefaults.standard.bool(forKey: "rmcSignedIn")
+        print(isSignedIn)
+        
+        if (!isSignedIn){
+                
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -88,9 +95,15 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         new_review?.workload = workload
         new_review?.id = UUID().uuidString
         new_review?.user_id = 1
-        DispatchQueue.global(qos: .userInitiated).async{
-        print(self.dbAccessor.addReview(review: new_review!))
+        
+        let userIsSignedIn = UserDefaults.standard.bool(forKey: "rmcSignedIn")
+        
+        if (userIsSignedIn){
+            DispatchQueue.global(qos: .userInitiated).async{
+                print(self.dbAccessor.addReview(review: new_review!))
+            }
         }
+        
         let alertControl = UIAlertController(title: "Review Posted", message: "Review sent to database!", preferredStyle: .alert)
         
         let alertAction = UIAlertAction(title: "OKAY", style: .default, handler: closeModalViewFromAlert)

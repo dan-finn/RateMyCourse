@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F928C424016F55635107D001D00562D3'
+               BlueprintIdentifier = '65A97218F5297D9F24B22D7033CA9D1D'
                BlueprintName = 'AWSPolly'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'AWSPolly.framework'>

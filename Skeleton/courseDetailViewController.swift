@@ -55,6 +55,14 @@ class courseDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func prepareForNewReview(){
+        if(UserDefaults.standard.bool(forKey: "rmcSignedIn")){
+            self.performSegue(withIdentifier: "newReviewSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "toSignInView", sender: self)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,6 +76,7 @@ class courseDetailViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newReviewSegue" {
+            print("we still got here just didnt do it")
             let destVC = segue.destination as! createReviewViewController
             destVC.incomingCourseTitle = titleLabel.text!
             destVC.incomingCourseCode = codeLabel.text!
@@ -78,6 +87,14 @@ class courseDetailViewController: UIViewController {
             let destVC = segue.destination as! ReviewsView
             destVC.incomingCourseCode = codeLabel.text!
         }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "newReviewSegue"{
+            return UserDefaults.standard.bool(forKey: "rmcSignedIn")
+        }
+        
+        return true
     }
 
     /*

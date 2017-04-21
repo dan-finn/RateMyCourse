@@ -11,6 +11,7 @@
 #endif
 
 #import "AWSPolly.h"
+#import "AWSPollyEnumTranslatorUtility.h"
 #import "AWSPollyModel.h"
 #import "AWSPollyResources.h"
 #import "AWSPollyService.h"

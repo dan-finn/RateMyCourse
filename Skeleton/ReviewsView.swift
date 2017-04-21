@@ -21,7 +21,6 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.theCollectionView.dataSource = self
-        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout();
         
         layout.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 0, right: 30)
