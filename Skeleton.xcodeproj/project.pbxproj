@@ -15,6 +15,7 @@
 		371DE53A1EABF17600D0184C /* courseToDeptMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DE5391EABF17600D0184C /* courseToDeptMapper.swift */; };
 		371DE53C1EABF6C400D0184C /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DE53B1EABF6C400D0184C /* Favorite.swift */; };
 		371DE5401EAC025800D0184C /* favoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DE53F1EAC025800D0184C /* favoritesViewController.swift */; };
+		371DE5421EAC1D1300D0184C /* addCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DE5411EAC1D1300D0184C /* addCourseViewController.swift */; };
 		376B4E4B1E9C3BBA00D7DDC7 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */; };
 		376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4C1E9C3C2100D7DDC7 /* Course.swift */; };
 		376B4E511E9C49EF00D7DDC7 /* courseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */; };
@@ -55,6 +56,7 @@
 		371DE5391EABF17600D0184C /* courseToDeptMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseToDeptMapper.swift; sourceTree = "<group>"; };
 		371DE53B1EABF6C400D0184C /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		371DE53F1EAC025800D0184C /* favoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = favoritesViewController.swift; sourceTree = "<group>"; };
+		371DE5411EAC1D1300D0184C /* addCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addCourseViewController.swift; sourceTree = "<group>"; };
 		376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		376B4E4C1E9C3C2100D7DDC7 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseDetailViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				371DE5391EABF17600D0184C /* courseToDeptMapper.swift */,
 				371DE53B1EABF6C400D0184C /* Favorite.swift */,
 				371DE53F1EAC025800D0184C /* favoritesViewController.swift */,
+				371DE5411EAC1D1300D0184C /* addCourseViewController.swift */,
 			);
 			path = Skeleton;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37AFE3C71EA415E800F80FF7 /* createReviewViewController.swift in Sources */,
+				371DE5421EAC1D1300D0184C /* addCourseViewController.swift in Sources */,
 				371DE53C1EABF6C400D0184C /* Favorite.swift in Sources */,
 				376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */,
 				3700C1731EA94EFB00EC5FF3 /* Review.swift in Sources */,

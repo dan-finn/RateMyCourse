@@ -10,6 +10,8 @@ import UIKit
 
 class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var addCourseBtn: UIButton!
+    @IBOutlet weak var addCourseView: UIView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var theTableView: UITableView!
     @IBOutlet weak var searchTitle: UINavigationItem!
@@ -25,7 +27,8 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         super.viewDidLoad()
         print(querySent)
         searchTitle.title = querySent
-        
+        self.addCourseView.backgroundColor =  UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0)
+        addCourseBtn.setTitleColor(UIColor.white, for: .normal)
         self.theTableView.delegate = self
         self.theTableView.dataSource = self
         
@@ -118,6 +121,18 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
     }
     
+    @IBAction func prepareForAddSegue(){
+        if (UserDefaults.standard.bool(forKey: "rmcSignedIn")){
+            self.performSegue(withIdentifier: "toAddCourseView", sender: self)
+            
+        } else {
+            self.performSegue(withIdentifier: "toSignInView", sender: self)
+        }
+        
+    
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toCourseDetailView" {
@@ -134,6 +149,14 @@ class ResultsView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         
         
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "toAddCourseView"{
+            return UserDefaults.standard.bool(forKey: "rmcSignedIn")
+        }
+        
+        return true
     }
     
 
