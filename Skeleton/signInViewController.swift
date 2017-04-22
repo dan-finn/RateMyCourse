@@ -17,6 +17,7 @@ class signInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.usernameField.autocorrectionType = .no
         if(UserDefaults.standard.bool(forKey: "rmcSignedIn")){
             self.dismiss(animated: true, completion: nil)
         }
@@ -60,6 +61,10 @@ class signInViewController: UIViewController {
         
         guard let newUsername = usernameField.text else {return}
         
+        if (newUsername == ""){
+            return
+        }
+        
         if dbAccessor.getUser(Username: newUsername) != nil{
             print("User Found")
             let alertController = UIAlertController(title: "ERROR", message: "Username already registered!", preferredStyle: .alert)
@@ -75,6 +80,10 @@ class signInViewController: UIViewController {
         }
         
         guard let newPassword = passwordField.text else {return}
+        
+        if (newUsername == "" || newPassword == ""){
+            return
+        }
         let passHash = hashPassword(password: newPassword);
         
         let newUser = User()
@@ -97,8 +106,15 @@ class signInViewController: UIViewController {
     @IBAction func signInUser(){
         guard let clientUsername = usernameField.text else {return}
         
+        if (clientUsername == ""){
+            return
+        }
+        
         if let serverUserObject = dbAccessor.getUser(Username: clientUsername){
             guard let clientPassword = passwordField.text else {return}
+            if (clientPassword == ""){
+                return
+            }
             if (hashPassword(password: clientPassword) == serverUserObject.passwordHash){
                 print("SIGN IN SUCCESSFUL")
                

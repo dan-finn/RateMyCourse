@@ -13,8 +13,8 @@ class SecondViewController: UIViewController {
   
     @IBOutlet weak var signInButton: UIBarButtonItem!
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var schoolYearMajorLabel: UILabel!
+    @IBOutlet weak var btnStackView: UIStackView!
+    @IBOutlet weak var signInLabel: UILabel!
     @IBAction func favoritesButton(_ sender: UIButton) {
     }
     
@@ -43,6 +43,10 @@ class SecondViewController: UIViewController {
             UserDefaults.standard.set(false, forKey: "rmcSignedIn")
             UserDefaults.standard.removeObject(forKey: "rmcUsername")
             self.navigationItem.rightBarButtonItem?.title = "Sign In"
+            self.btnStackView.isHidden = true
+            self.signInLabel.isHidden = false
+            self.navigationItem.title = "PROFILE"
+            self.tabBarController?.tabBar.items?[1].title = "Profile"
         }
         
     }
@@ -52,8 +56,12 @@ class SecondViewController: UIViewController {
         guard UserDefaults.standard.string(forKey: "rmcUsername") != nil else {return}
         
         if (userIsSignedIn){
+            print("here")
             self.navigationItem.rightBarButtonItem?.title = "Sign Out"
-            
+            self.btnStackView.isHidden = false
+            self.signInLabel.isHidden = true
+            self.navigationItem.title = UserDefaults.standard.string(forKey: "rmcUsername")!.capitalized
+            self.tabBarController?.tabBar.items?[1].title = UserDefaults.standard.string(forKey: "rmcUsername")!.capitalized
         }
     
     }

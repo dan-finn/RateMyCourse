@@ -11,7 +11,7 @@ import AWSDynamoDB
 
 class Review : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     var id = ""
-    var user_id: Int = 0
+    var user_id: String = ""
     var Code: String = ""
     var overall: Int = 0
     var grading: Int = 0
@@ -24,7 +24,11 @@ class Review : AWSDynamoDBObjectModel, AWSDynamoDBModeling {
         return "Reviews"
     }
     class func hashKeyAttribute() -> String {
-        return "id"
+        return "Code"
+    }
+    
+    class func rangeKeyAttribute() -> String {
+        return "user_id"
     }
     
 }

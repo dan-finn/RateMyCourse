@@ -12,6 +12,9 @@
 		3700C1751EA9636E00EC5FF3 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700C1741EA9636E00EC5FF3 /* ReviewsView.swift */; };
 		3707CDC61EAA9B3E007D4DBC /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707CDC51EAA9B3E007D4DBC /* signInViewController.swift */; };
 		3707CDC81EAAA926007D4DBC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707CDC71EAAA926007D4DBC /* User.swift */; };
+		371DE53A1EABF17600D0184C /* courseToDeptMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DE5391EABF17600D0184C /* courseToDeptMapper.swift */; };
+		371DE53C1EABF6C400D0184C /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DE53B1EABF6C400D0184C /* Favorite.swift */; };
+		371DE5401EAC025800D0184C /* favoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371DE53F1EAC025800D0184C /* favoritesViewController.swift */; };
 		376B4E4B1E9C3BBA00D7DDC7 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */; };
 		376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4C1E9C3C2100D7DDC7 /* Course.swift */; };
 		376B4E511E9C49EF00D7DDC7 /* courseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */; };
@@ -49,6 +52,9 @@
 		3700C1741EA9636E00EC5FF3 /* ReviewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		3707CDC51EAA9B3E007D4DBC /* signInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signInViewController.swift; sourceTree = "<group>"; };
 		3707CDC71EAAA926007D4DBC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		371DE5391EABF17600D0184C /* courseToDeptMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseToDeptMapper.swift; sourceTree = "<group>"; };
+		371DE53B1EABF6C400D0184C /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		371DE53F1EAC025800D0184C /* favoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = favoritesViewController.swift; sourceTree = "<group>"; };
 		376B4E4A1E9C3BBA00D7DDC7 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		376B4E4C1E9C3C2100D7DDC7 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseDetailViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 				3700C1741EA9636E00EC5FF3 /* ReviewsView.swift */,
 				3707CDC51EAA9B3E007D4DBC /* signInViewController.swift */,
 				3707CDC71EAAA926007D4DBC /* User.swift */,
+				371DE5391EABF17600D0184C /* courseToDeptMapper.swift */,
+				371DE53B1EABF6C400D0184C /* Favorite.swift */,
+				371DE53F1EAC025800D0184C /* favoritesViewController.swift */,
 			);
 			path = Skeleton;
 			sourceTree = "<group>";
@@ -366,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37AFE3C71EA415E800F80FF7 /* createReviewViewController.swift in Sources */,
+				371DE53C1EABF6C400D0184C /* Favorite.swift in Sources */,
 				376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */,
 				3700C1731EA94EFB00EC5FF3 /* Review.swift in Sources */,
 				3707CDC61EAA9B3E007D4DBC /* signInViewController.swift in Sources */,
@@ -373,10 +383,12 @@
 				3700C1751EA9636E00EC5FF3 /* ReviewsView.swift in Sources */,
 				611A844D1E9ADFC20058891D /* SecondViewController.swift in Sources */,
 				611A84791E9AF8FE0058891D /* ResultsView.swift in Sources */,
+				371DE5401EAC025800D0184C /* favoritesViewController.swift in Sources */,
 				3707CDC81EAAA926007D4DBC /* User.swift in Sources */,
 				611A84491E9ADFC20058891D /* AppDelegate.swift in Sources */,
 				611A844B1E9ADFC20058891D /* FirstViewController.swift in Sources */,
 				376B4E511E9C49EF00D7DDC7 /* courseDetailViewController.swift in Sources */,
+				371DE53A1EABF17600D0184C /* courseToDeptMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

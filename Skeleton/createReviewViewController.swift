@@ -12,10 +12,11 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
 
     let sliderStep = CGFloat(1)
     
-    let placeHolderText = "Insert comments... (optional)"
+    var placeHolderText = "Insert comments... (optional)"
     
     var incomingCourseTitle = ""
     var incomingCourseCode = ""
+    var userHasSubmittedPrevReview = false
     
     let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
    
@@ -32,6 +33,7 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var workloadSlider: UISlider!
     @IBOutlet weak var workloadVal: UILabel!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = incomingCourseTitle
@@ -44,12 +46,32 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         let isSignedIn = UserDefaults.standard.bool(forKey: "rmcSignedIn")
         print(isSignedIn)
         
-        if (!isSignedIn){
-                
+        guard let curUser = dbAccessor.getUser(Username: UserDefaults.standard.string(forKey: "rmcUsername")!) else {dismiss(animated: true, completion: nil); return}
+        
+        if let prevReview = dbAccessor.getReview(code: incomingCourseCode, user: curUser) {
+            userHasSubmittedPrevReview = true
+            overallRatingVal.text = String(prevReview.overall)
+            overallRatingSlider.value = Float(prevReview.overall)
+            
+            gradingDifVal.text = String(prevReview.grading)
+            gradingDifSlider.value = Float(prevReview.grading)
+            
+            workloadVal.text = String(prevReview.workload)
+            workloadSlider.value = Float(prevReview.workload)
+            
+            profTextField.text = prevReview.professors
+            reviewTextView.text = prevReview.comments
+            self.placeHolderText = prevReview.comments
+            
+        
         }
+        
+        
+        
         
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,6 +88,14 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func postReview(){
+        let curUser = dbAccessor.getUser(Username: UserDefaults.standard.string(forKey: "rmcUsername")!)
+
+        if (userHasSubmittedPrevReview){
+            let mapper = dbAccessor.getMapperObject()
+            let prevView = dbAccessor.getReview(code: incomingCourseCode, user: curUser!)
+            mapper.remove(prevView!)
+        }
+        
         let new_review = Review()
         
         new_review?.Code = incomingCourseCode
@@ -75,6 +105,9 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         }*/
         
         new_review?.comments = reviewTextView.text
+        if (new_review?.comments == ""){
+            new_review?.comments = "*"
+        }
         
         var overall = 0
         var grading = 0
@@ -94,7 +127,8 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         new_review?.grading = grading
         new_review?.workload = workload
         new_review?.id = UUID().uuidString
-        new_review?.user_id = 1
+        new_review?.user_id = (curUser?.userID)!
+        
         
         let userIsSignedIn = UserDefaults.standard.bool(forKey: "rmcSignedIn")
         

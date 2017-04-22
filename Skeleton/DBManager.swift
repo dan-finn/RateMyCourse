@@ -172,6 +172,30 @@ class DBManager {
         
     }
     
+    func scanFavoritesForUser(user: User) -> [Favorite]? {
+        let scanExpression = AWSDynamoDBScanExpression()
+        var scanResults = [Favorite]()
+        var fetched = false
+        
+        scanExpression.filterExpression = "user_id = :val"
+        scanExpression.expressionAttributeValues = [":val" : user.userID ]
+        dbMapper?.scan(Favorite.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+            } else if let paginatedOutput = task.result {
+                for favorite in paginatedOutput.items as! [Favorite] {
+                    scanResults.append(favorite)
+                }
+            }
+            fetched = true;
+            return nil
+        })
+        while (!fetched){}
+        return scanResults
+
+    
+    }
+    
     func scanReviews(code: String) -> [Review]? {
         let scanExpression = AWSDynamoDBScanExpression()
         var scanResults = [Review]()
@@ -226,6 +250,22 @@ class DBManager {
         return (success != nil)
     }
     
+    func addFavorite(favorite: Favorite) -> Bool {
+        let success = dbMapper?.save(favorite).continueWith(block: { (task: AWSTask<AnyObject>! ) -> Bool? in
+            if let error = task.error as? NSError {
+                print("Save request failed with error: \(error)")
+                return nil;
+            } else {
+                return true
+                
+            }
+        })
+        
+        return (success != nil)
+
+    }
+    
+    
     func addUser(user: User) -> Bool {
         let success = dbMapper?.save(user).continueWith(block: { (task: AWSTask<AnyObject>! ) -> Bool? in
             if let error = task.error as? NSError {
@@ -238,6 +278,54 @@ class DBManager {
         })
         
         return (success != nil)
+    }
+    
+    func getReview(code: String, user: User) -> Review? {
+        var fetchComplete = false
+        var grabbedReview:Review?
+        
+        // load data from CourseCode string
+        dbMapper?.load(Review.self, hashKey: code, rangeKey: user.userID).continueWith(block: { (task:AWSTask<AnyObject>!) -> Review? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+                return nil
+            } else if let resultReview = task.result as? Review {
+                grabbedReview = resultReview
+            }
+            fetchComplete = true
+            return nil
+            
+        })
+        
+        // block until the fetch is complete
+        while(!fetchComplete){}
+        return grabbedReview
+        
+    
+    }
+    
+    func getFavorite(code: String, user: User) -> Favorite? {
+        var fetchComplete = false
+        var grabbedFavorite:Favorite?
+        
+        // load data from CourseCode string
+        dbMapper?.load(Favorite.self, hashKey: user.userID, rangeKey: code).continueWith(block: { (task:AWSTask<AnyObject>!) -> Favorite? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+                return nil
+            } else if let resultFavorite = task.result as? Favorite {
+                grabbedFavorite = resultFavorite
+            }
+            fetchComplete = true
+            return nil
+            
+        })
+        
+        // block until the fetch is complete
+        while(!fetchComplete){}
+        return grabbedFavorite
+
+    
     }
 
     

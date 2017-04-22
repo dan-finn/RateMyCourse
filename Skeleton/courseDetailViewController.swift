@@ -11,7 +11,7 @@ import UIKit
 class courseDetailViewController: UIViewController {
     
     var incomingCourseCode = ""
-
+    var prevFavorite: Favorite?
     let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
     
     
@@ -20,6 +20,7 @@ class courseDetailViewController: UIViewController {
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var descriptionArea: UITextView!
     
+    @IBOutlet weak var favoriteBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -44,16 +45,51 @@ class courseDetailViewController: UIViewController {
                 
             }
         }
+        
+            if (UserDefaults.standard.bool(forKey: "rmcSignedIn")){
+                if let curUser = self.dbAccessor.getUser(Username: UserDefaults.standard.string(forKey: "rmcUsername")!) {
+                    if let fav = self.dbAccessor.getFavorite(code: self.codeLabel.text!, user: curUser) {
+                        
+                        self.prevFavorite = fav
+                        DispatchQueue.main.async {
+                            self.favoriteBtn.setTitle("Unfavorite", for: .normal)
+                        }
+                    }
+                }
             
-        print("lol")
+            }
+        
     }
-        
-        
-        
-        
 
-
-        // Do any additional setup after loading the view.
+}
+    
+    @IBAction func favoriteCourse(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Unfavorite" {
+            print("somehow got here idk how")
+            let mapper = dbAccessor.getMapperObject()
+            mapper.remove(self.prevFavorite!)
+            favoriteBtn.setTitle("Favorite", for: .normal)
+            
+            return
+            
+        }
+        
+        if(!UserDefaults.standard.bool(forKey: "rmcSignedIn")){
+            self.performSegue(withIdentifier: "toSignInView", sender: self)
+            return
+        }
+        let newFavorite = Favorite()
+        guard let curUser = dbAccessor.getUser(Username: UserDefaults.standard.string(forKey: "rmcUsername")!) else {return}
+        
+        newFavorite?.Code = codeLabel.text!
+        newFavorite?.user_id = curUser.userID
+        
+        self.prevFavorite = newFavorite
+        
+        favoriteBtn.setTitle("Unfavorite", for: .normal)
+        _ = dbAccessor.addFavorite(favorite: newFavorite!)
+        
+        
     }
     
     @IBAction func prepareForNewReview(){
@@ -64,6 +100,8 @@ class courseDetailViewController: UIViewController {
         }
     }
 
+    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
