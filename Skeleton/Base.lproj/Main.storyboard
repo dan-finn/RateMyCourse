@@ -561,7 +561,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="REVIEW NOTES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OPQ-Xo-doc">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="REVIEW NOTES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OPQ-Xo-doc">
                                 <rect key="frame" x="67" y="489" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -589,22 +589,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pep-YO-xws">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pep-YO-xws">
                                 <rect key="frame" x="72" y="625" width="231" height="28"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="so4-vo-hCg">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="so4-vo-hCg">
                                         <rect key="frame" x="67" y="-2" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Delete Review"/>
+                                        <connections>
+                                            <action selector="deleteReview" destination="Tnn-dr-glG" eventType="touchUpInside" id="i1p-Oi-EmJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="so4-vo-hCg" secondAttribute="bottom" id="LFx-V1-1i3"/>
+                                    <constraint firstAttribute="trailing" secondItem="so4-vo-hCg" secondAttribute="trailing" constant="67" id="Zxn-Wo-sEM"/>
+                                    <constraint firstItem="so4-vo-hCg" firstAttribute="leading" secondItem="Pep-YO-xws" secondAttribute="leading" constant="67" id="arY-0T-zIZ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="neN-4l-vs9" firstAttribute="top" secondItem="OPQ-Xo-doc" secondAttribute="bottom" constant="50" id="Dhz-mc-ovN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pep-YO-xws" secondAttribute="trailing" constant="56" id="ED2-fh-gTs"/>
+                            <constraint firstItem="OPQ-Xo-doc" firstAttribute="top" secondItem="gkE-Po-8JX" secondAttribute="bottom" constant="469" id="EcX-24-Ayd"/>
+                            <constraint firstItem="OPQ-Xo-doc" firstAttribute="leading" secondItem="2fv-Sv-5Xh" secondAttribute="leadingMargin" constant="51" id="He5-zd-sTo"/>
                             <constraint firstItem="Pep-YO-xws" firstAttribute="top" secondItem="OPQ-Xo-doc" secondAttribute="bottom" constant="8" id="Lcq-GV-sLr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OPQ-Xo-doc" secondAttribute="trailing" constant="52" id="bKZ-gZ-czC"/>
                             <constraint firstItem="Pep-YO-xws" firstAttribute="leading" secondItem="2fv-Sv-5Xh" secondAttribute="leadingMargin" constant="56" id="g8b-P5-cOH"/>
                             <constraint firstItem="neN-4l-vs9" firstAttribute="top" secondItem="Pep-YO-xws" secondAttribute="bottom" constant="14" id="gnb-WO-ypi"/>
                         </constraints>
@@ -674,27 +685,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Csb-U3-KPN">
-                                <rect key="frame" x="156" y="351" width="62" height="60"/>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yij-om-Ldv">
+                                <rect key="frame" x="39" y="229" width="297" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64U-it-8hz">
-                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
-                                        <state key="normal" title="Favorites"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64U-it-8hz">
+                                        <rect key="frame" x="105" y="5" width="87" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="My Favorites"/>
                                         <connections>
-                                            <action selector="favoritesButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="8jv-ei-KtR"/>
                                             <segue destination="Acu-xv-OfA" kind="show" id="T9V-I9-mlj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lo2-ay-On3">
-                                        <rect key="frame" x="0.0" y="30" width="62" height="30"/>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XRz-re-AOP">
+                                <rect key="frame" x="39" y="277" width="297" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVG-R6-eDL">
+                                        <rect key="frame" x="108" y="5" width="81" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="My Reviews"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oa4-R5-gW6">
+                                <rect key="frame" x="39" y="325" width="297" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lo2-ay-On3">
+                                        <rect key="frame" x="117" y="5" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Settings"/>
                                         <connections>
                                             <action selector="settingsButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Tyf-Dg-nut"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please sign in for Favorites and Settings " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtj-RY-DVe">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please sign in for Favorites and Settings " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtj-RY-DVe">
                                 <rect key="frame" x="33" y="306" width="309" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -703,11 +736,11 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Csb-U3-KPN" secondAttribute="bottom" constant="207" id="4pI-DZ-T77"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Csb-U3-KPN" secondAttribute="trailing" constant="141" id="9kr-aK-1SF"/>
-                            <constraint firstItem="Csb-U3-KPN" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="140" id="BCR-8x-HTz"/>
-                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="qtj-RY-DVe"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile" selectedImage="Profile" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" title="PROFILE" id="LML-aU-yaN">
@@ -718,7 +751,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnStackView" destination="Csb-U3-KPN" id="jgP-7P-RWk"/>
+                        <outlet property="favoritesBtn" destination="64U-it-8hz" id="oYw-Fb-5q7"/>
+                        <outlet property="favoritesBtnView" destination="Yij-om-Ldv" id="T9p-X1-6dO"/>
+                        <outlet property="reviewsBtn" destination="cVG-R6-eDL" id="xMI-7X-zWs"/>
+                        <outlet property="reviewsBtnView" destination="XRz-re-AOP" id="mRw-Cg-6Gl"/>
+                        <outlet property="settingsBtn" destination="lo2-ay-On3" id="qtB-sI-kc7"/>
+                        <outlet property="settingsBtnView" destination="oa4-R5-gW6" id="1OU-5S-Uqm"/>
                         <outlet property="signInButton" destination="O54-88-aL3" id="JgH-CD-PiN"/>
                         <outlet property="signInLabel" destination="qtj-RY-DVe" id="uNT-aP-Crg"/>
                         <segue destination="IOa-ip-Bf7" kind="presentation" identifier="toSignInView" id="d0q-Df-POC"/>

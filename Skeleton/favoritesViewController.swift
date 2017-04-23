@@ -19,6 +19,7 @@ class favoritesViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var theCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.instructionsLabel.isHidden = true
         
         courses = []
         spinner.startAnimating()

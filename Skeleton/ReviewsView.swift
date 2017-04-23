@@ -98,7 +98,7 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (self.searchResults.count == 0){
+        if (self.reviews.count == 0){
             getResults()
         }
         theCollectionView.reloadData()

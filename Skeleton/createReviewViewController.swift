@@ -46,7 +46,10 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         reviewTextView.layer.borderColor = UIColor.lightGray.cgColor
         reviewTextView.textColor = UIColor.lightGray
         
-        deleteReviewBtn.setTitleColor(UIColor.red, for: .normal)
+        deleteReviewBtn.setTitleColor(UIColor.white, for: .normal)
+        deleteReviewView.layer.backgroundColor = UIColor.red.cgColor
+        
+        
         
         let isSignedIn = UserDefaults.standard.bool(forKey: "rmcSignedIn")
         print(isSignedIn)
@@ -67,16 +70,26 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
             profTextField.text = prevReview.professors
             reviewTextView.text = prevReview.comments
             self.placeHolderText = prevReview.comments
+            deleteReviewView.isHidden = false
             
         
         }
         
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        singleTap.numberOfTapsRequired = 1
+        
+        view.addGestureRecognizer(singleTap)
         
         
         
         // Do any additional setup after loading the view.
     }
     
+    func dismissKeyboard(){
+        view.endEditing(true)
+    
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -191,6 +204,21 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         reviewTextView.resignFirstResponder()
+    }
+    
+    @IBAction func deleteReview(){
+        guard let curUser = dbAccessor.getUser(Username: UserDefaults.standard.string(forKey: "rmcUsername")!) else {return}
+        
+        if let prevReview = dbAccessor.getReview(code: incomingCourseCode, user: curUser) {
+            let mapper = dbAccessor.getMapperObject()
+            mapper.remove(prevReview)
+            self.dismiss(animated: true, completion: nil)
+        
+        }
+        
+        
+        
+    
     }
 
     /*

@@ -13,18 +13,31 @@ class SecondViewController: UIViewController {
   
     @IBOutlet weak var signInButton: UIBarButtonItem!
     
-    @IBOutlet weak var btnStackView: UIStackView!
+    @IBOutlet weak var favoritesBtnView: UIView!
+    @IBOutlet weak var favoritesBtn: UIButton!
+    
+    
+    @IBOutlet weak var reviewsBtnView: UIView!
+    @IBOutlet weak var reviewsBtn: UIButton!
+    
+    @IBOutlet weak var settingsBtnView: UIView!
+    
+    @IBOutlet weak var settingsBtn: UIButton!
+    
+    
     @IBOutlet weak var signInLabel: UILabel!
-    @IBAction func favoritesButton(_ sender: UIButton) {
-    }
-    
-    @IBAction func friendsButton(_ sender: UIButton) {
-    }
-    
-    @IBAction func settingsButton(_ sender: UIButton) {
-    }
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
+        
+            favoritesBtnView.layer.backgroundColor = UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0).cgColor
+            reviewsBtnView.layer.backgroundColor = UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0).cgColor
+            settingsBtnView.layer.backgroundColor = UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0).cgColor
+            
+            favoritesBtn.setTitleColor(UIColor.white, for: .normal)
+            reviewsBtn.setTitleColor(UIColor.white, for: .normal)
+            settingsBtn.setTitleColor(UIColor.white, for: .normal)
+            
+            
         // Do any additional setup after loading the view, typically from a nib.
         
     }
@@ -43,7 +56,7 @@ class SecondViewController: UIViewController {
             UserDefaults.standard.set(false, forKey: "rmcSignedIn")
             UserDefaults.standard.removeObject(forKey: "rmcUsername")
             self.navigationItem.rightBarButtonItem?.title = "Sign In"
-            self.btnStackView.isHidden = true
+            
             self.signInLabel.isHidden = false
             self.navigationItem.title = "PROFILE"
             self.tabBarController?.tabBar.items?[1].title = "Profile"
@@ -58,10 +71,13 @@ class SecondViewController: UIViewController {
         if (userIsSignedIn){
             print("here")
             self.navigationItem.rightBarButtonItem?.title = "Sign Out"
-            self.btnStackView.isHidden = false
             self.signInLabel.isHidden = true
             self.navigationItem.title = UserDefaults.standard.string(forKey: "rmcUsername")!.capitalized
             self.tabBarController?.tabBar.items?[1].title = UserDefaults.standard.string(forKey: "rmcUsername")!.capitalized
+            
+            self.favoritesBtnView.isHidden = false
+            self.reviewsBtnView.isHidden = false
+            self.settingsBtnView.isHidden = false
         }
     
     }

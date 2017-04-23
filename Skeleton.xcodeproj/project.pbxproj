@@ -20,6 +20,7 @@
 		376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E4C1E9C3C2100D7DDC7 /* Course.swift */; };
 		376B4E511E9C49EF00D7DDC7 /* courseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */; };
 		37AFE3C71EA415E800F80FF7 /* createReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFE3C61EA415E800F80FF7 /* createReviewViewController.swift */; };
+		37BAADFC1EAD4C30000625D4 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BAADFB1EAD4C30000625D4 /* DisplayView.swift */; };
 		611A84491E9ADFC20058891D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A84481E9ADFC20058891D /* AppDelegate.swift */; };
 		611A844B1E9ADFC20058891D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A844A1E9ADFC20058891D /* FirstViewController.swift */; };
 		611A844D1E9ADFC20058891D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A844C1E9ADFC20058891D /* SecondViewController.swift */; };
@@ -61,6 +62,7 @@
 		376B4E4C1E9C3C2100D7DDC7 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		376B4E501E9C49EF00D7DDC7 /* courseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseDetailViewController.swift; sourceTree = "<group>"; };
 		37AFE3C61EA415E800F80FF7 /* createReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createReviewViewController.swift; sourceTree = "<group>"; };
+		37BAADFB1EAD4C30000625D4 /* DisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		611A84451E9ADFC20058891D /* Skeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		611A84481E9ADFC20058891D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		611A844A1E9ADFC20058891D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				371DE53B1EABF6C400D0184C /* Favorite.swift */,
 				371DE53F1EAC025800D0184C /* favoritesViewController.swift */,
 				371DE5411EAC1D1300D0184C /* addCourseViewController.swift */,
+				37BAADFB1EAD4C30000625D4 /* DisplayView.swift */,
 			);
 			path = Skeleton;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37BAADFC1EAD4C30000625D4 /* DisplayView.swift in Sources */,
 				37AFE3C71EA415E800F80FF7 /* createReviewViewController.swift in Sources */,
 				371DE5421EAC1D1300D0184C /* addCourseViewController.swift in Sources */,
 				371DE53C1EABF6C400D0184C /* Favorite.swift in Sources */,
