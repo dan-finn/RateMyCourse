@@ -144,9 +144,6 @@ class DBManager {
             break
         case .department:
             scanExpression.filterExpression = "Code BEGINS :val"
-        
-        default:
-            break
         }
         
         if focuser != "" {

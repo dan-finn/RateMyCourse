@@ -33,6 +33,9 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var workloadSlider: UISlider!
     @IBOutlet weak var workloadVal: UILabel!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var deleteReviewView: UIView!
+    
+    @IBOutlet weak var deleteReviewBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,8 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         profTextField.placeholder = "Prof 1, Prof 2, Prof 3"
         reviewTextView.layer.borderColor = UIColor.lightGray.cgColor
         reviewTextView.textColor = UIColor.lightGray
+        
+        deleteReviewBtn.setTitleColor(UIColor.red, for: .normal)
         
         let isSignedIn = UserDefaults.standard.bool(forKey: "rmcSignedIn")
         print(isSignedIn)

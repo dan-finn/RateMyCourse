@@ -156,10 +156,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ef-gG-Axz">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ef-gG-Axz">
                                 <rect key="frame" x="67" y="532" width="240" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3R-zR-ZCG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3R-zR-ZCG">
                                         <rect key="frame" x="104" y="5" width="32" height="30"/>
                                         <state key="normal" title="ADD"/>
                                         <connections>
@@ -170,18 +170,21 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="e3R-zR-ZCG" firstAttribute="leading" secondItem="7Ef-gG-Axz" secondAttribute="leading" constant="104" id="VJs-pf-Ebo"/>
+                                    <constraint firstAttribute="bottom" secondItem="e3R-zR-ZCG" secondAttribute="bottom" constant="5" id="VWI-0t-7Gf"/>
                                     <constraint firstAttribute="trailing" secondItem="e3R-zR-ZCG" secondAttribute="trailing" constant="104" id="g59-IE-ZtL"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7Ef-gG-Axz" firstAttribute="leading" secondItem="DWr-Ww-Cxy" secondAttribute="leadingMargin" constant="51" id="9nA-UK-zuJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Ef-gG-Axz" secondAttribute="trailing" constant="52" id="Cc8-as-VmF"/>
-                            <constraint firstItem="ZRH-IV-jDT" firstAttribute="top" secondItem="7Ef-gG-Axz" secondAttribute="bottom" constant="95" id="jc2-Gw-LDY"/>
+                            <constraint firstItem="7Ef-gG-Axz" firstAttribute="top" secondItem="Ptz-yx-qpk" secondAttribute="bottom" constant="512" id="HM8-JD-bVs"/>
+                            <constraint firstItem="ZRH-IV-jDT" firstAttribute="top" secondItem="7Ef-gG-Axz" secondAttribute="bottom" constant="95" id="Psb-cE-ubO"/>
+                            <constraint firstItem="7Ef-gG-Axz" firstAttribute="centerX" secondItem="DWr-Ww-Cxy" secondAttribute="centerX" id="xiT-yh-gTo"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addCourseBtn" destination="e3R-zR-ZCG" id="upq-wV-iKI"/>
+                        <outlet property="addCourseView" destination="7Ef-gG-Axz" id="oKe-aX-MoA"/>
                         <outlet property="codeField" destination="J7S-Yd-uqt" id="ils-m1-Hyi"/>
                         <outlet property="descriptionField" destination="igS-gL-muM" id="1Q7-IT-PgZ"/>
                         <outlet property="titleField" destination="V9i-ui-99U" id="xQu-dH-ur4"/>
@@ -211,7 +214,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p7h-Ho-NjI" id="jWM-tP-Gxy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL8-dH-Ist">
@@ -399,7 +402,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reviewCardCell" id="nBX-zS-w1C">
-                                        <rect key="frame" x="31" y="0.0" width="308" height="80"/>
+                                        <rect key="frame" x="30.5" y="0.0" width="308" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="308" height="80"/>
@@ -558,10 +561,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="REVIEW NOTES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OPQ-Xo-doc">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="REVIEW NOTES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OPQ-Xo-doc">
                                 <rect key="frame" x="67" y="489" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
@@ -587,11 +589,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pep-YO-xws">
+                                <rect key="frame" x="72" y="625" width="231" height="28"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="so4-vo-hCg">
+                                        <rect key="frame" x="67" y="-2" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Delete Review"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pep-YO-xws" secondAttribute="trailing" constant="56" id="ED2-fh-gTs"/>
+                            <constraint firstItem="Pep-YO-xws" firstAttribute="top" secondItem="OPQ-Xo-doc" secondAttribute="bottom" constant="8" id="Lcq-GV-sLr"/>
+                            <constraint firstItem="Pep-YO-xws" firstAttribute="leading" secondItem="2fv-Sv-5Xh" secondAttribute="leadingMargin" constant="56" id="g8b-P5-cOH"/>
+                            <constraint firstItem="neN-4l-vs9" firstAttribute="top" secondItem="Pep-YO-xws" secondAttribute="bottom" constant="14" id="gnb-WO-ypi"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="DlR-Di-jed" id="cKo-m4-r8x"/>
+                        <outlet property="deleteReviewBtn" destination="so4-vo-hCg" id="E3o-P7-PEg"/>
+                        <outlet property="deleteReviewView" destination="Pep-YO-xws" id="f7b-te-o6K"/>
                         <outlet property="gradingDifSlider" destination="LnK-tM-xbK" id="qsl-0v-L2x"/>
                         <outlet property="gradingDifVal" destination="6rG-Wm-B4p" id="ndE-nH-pXy"/>
                         <outlet property="overallRatingSlider" destination="G7a-da-ylU" id="JCa-vK-VaZ"/>
@@ -605,7 +626,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9c-af-0kN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3778" y="-590"/>
+            <point key="canvasLocation" x="3776.8000000000002" y="-590.55472263868069"/>
         </scene>
         <!--Search-->
         <scene sceneID="6U8-85-DvE">
@@ -731,7 +752,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favoritesCell" id="WWn-Us-BTD">
-                                        <rect key="frame" x="37" y="0.0" width="302" height="69"/>
+                                        <rect key="frame" x="36.5" y="0.0" width="302" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="302" height="69"/>
