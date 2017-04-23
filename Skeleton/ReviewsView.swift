@@ -14,18 +14,25 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
     let OVERALL_LABEL_TAG = 2
     let PROFESSOR_LABEL_TAG = 3
     let COMMENTS_LABEL_TAG = 4
+    let HIDDEN_CODE_LABEL_TAG = 5
     
     var reviews: [Review] = []
     var incomingCourseCode = ""
     
     
+    @IBOutlet weak var noReviewsLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
     var searchResults = [Review]()
 
     @IBOutlet weak var theCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.noReviewsLabel.isHidden = true
+        self.theCollectionView.isHidden = true
         self.theCollectionView.dataSource = self
+        spinner.startAnimating()
+    
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout();
         
         layout.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 0, right: 30)
@@ -48,12 +55,19 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
                 for review in fetchedResults {
                    self.reviews.append(review)
                     self.theCollectionView.reloadData()
-                    print(review.comments)
+                    
                 }
                 
                 DispatchQueue.main.async {
+                    self.spinner.stopAnimating()
+                    self.spinner.isHidden = true
+                    
+                    if (self.reviews.count <= 0){
+                        self.noReviewsLabel.isHidden = false
+                    } else {
+                    self.theCollectionView.isHidden = false
                    self.theCollectionView.reloadData()
-                   
+                    }
                     
                 }
                 
@@ -73,7 +87,6 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("building cell")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewCardCell", for: indexPath)
         
         let review = reviews[indexPath.row]
@@ -92,6 +105,9 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
         } else {
             commentsLabel.text = "No comments provided"
         }
+        
+        let hiddenCodeLabel = cell.viewWithTag(HIDDEN_CODE_LABEL_TAG) as! UILabel
+        hiddenCodeLabel.text = "\(review.Code)|\(review.user_id)"
         
         overallLabel.text = String(review.overall)
         overallDisplayView.color = getColorFromValue(value: review.overall)
@@ -130,6 +146,19 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
             getResults()
         }
         theCollectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toReviewDetailView" {
+            let sendingCell = sender as! UICollectionViewCell
+            let destVC = segue.destination as! reviewDetailViewController
+            
+            let hiddenLabel = sendingCell.viewWithTag(HIDDEN_CODE_LABEL_TAG) as! UILabel
+            
+            destVC.incomingData = hiddenLabel.text!
+            
+            
+        }
     }
     
     

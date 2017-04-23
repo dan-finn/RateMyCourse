@@ -197,6 +197,31 @@ class DBManager {
         
     }
     
+    func scanReviewsForUser(user: User) -> [Review]? {
+        let scanExpression = AWSDynamoDBScanExpression()
+        var scanResults = [Review]()
+        var fetched = false
+        
+        scanExpression.filterExpression = "user_id = :val"
+        scanExpression.expressionAttributeValues = [":val" : user.userID ]
+        dbMapper?.scan(Review.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+            } else if let paginatedOutput = task.result {
+                for review in paginatedOutput.items as! [Review] {
+                    scanResults.append(review)
+                }
+            }
+            fetched = true;
+            return nil
+        })
+        while (!fetched){}
+        return scanResults
+        
+
+    
+    }
+    
     func scanReviews(code: String) -> [Review]? {
         let scanExpression = AWSDynamoDBScanExpression()
         var scanResults = [Review]()
@@ -304,6 +329,33 @@ class DBManager {
         
         
     }
+    
+    func getReview(code: String, user_id: String) -> Review? {
+        var fetchComplete = false
+        var grabbedReview:Review?
+        
+        // load data from CourseCode string
+        dbMapper?.load(Review.self, hashKey: code, rangeKey: user_id).continueWith(block: { (task:AWSTask<AnyObject>!) -> Review? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+                return nil
+            } else if let resultReview = task.result as? Review {
+                grabbedReview = resultReview
+            }
+            fetchComplete = true
+            return nil
+            
+        })
+        
+        // block until the fetch is complete
+        while(!fetchComplete){}
+        return grabbedReview
+        
+        
+    }
+    
+    
+    
     
     func getFavorite(code: String, user: User) -> Favorite? {
         var fetchComplete = false
