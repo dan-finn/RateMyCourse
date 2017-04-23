@@ -60,6 +60,9 @@ class SecondViewController: UIViewController {
             self.signInLabel.isHidden = false
             self.navigationItem.title = "PROFILE"
             self.tabBarController?.tabBar.items?[1].title = "Profile"
+            self.favoritesBtnView.isHidden = true
+            self.reviewsBtnView.isHidden = true
+            self.settingsBtnView.isHidden = true
         }
         
     }

@@ -429,25 +429,28 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Professor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il0-0B-OF2">
                                                     <rect key="frame" x="8" y="8" width="317" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spc-b9-JSE">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spc-b9-JSE">
                                                     <rect key="frame" x="8" y="102" width="317" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="spc-b9-JSE" secondAttribute="trailing" id="0aF-IH-MAn"/>
                                             <constraint firstAttribute="leadingMargin" secondItem="t5p-IN-lGg" secondAttribute="leading" id="Ekq-2f-GUs"/>
                                             <constraint firstItem="t5p-IN-lGg" firstAttribute="centerY" secondItem="nBX-zS-w1C" secondAttribute="centerY" id="Ny9-Q6-Qn4"/>
                                             <constraint firstItem="tPg-7q-zoG" firstAttribute="leading" secondItem="t5p-IN-lGg" secondAttribute="trailing" constant="10" id="QQd-Q2-6Ux"/>
+                                            <constraint firstItem="spc-b9-JSE" firstAttribute="leading" secondItem="nBX-zS-w1C" secondAttribute="leadingMargin" id="WHX-OG-c2a"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="spc-b9-JSE" secondAttribute="bottom" id="gfB-ky-Qmz"/>
                                             <constraint firstItem="tPg-7q-zoG" firstAttribute="centerY" secondItem="nBX-zS-w1C" secondAttribute="centerY" id="hC3-aX-oxo"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="cds-gm-ju6" secondAttribute="trailing" constant="8" id="k0M-DD-KlT"/>
+                                            <constraint firstItem="spc-b9-JSE" firstAttribute="centerX" secondItem="nBX-zS-w1C" secondAttribute="centerX" id="v1j-i6-wsX"/>
                                             <constraint firstItem="cds-gm-ju6" firstAttribute="centerY" secondItem="nBX-zS-w1C" secondAttribute="centerY" id="vTe-pf-qqC"/>
                                             <constraint firstItem="cds-gm-ju6" firstAttribute="leading" secondItem="tPg-7q-zoG" secondAttribute="trailing" constant="10" id="woz-bO-vfI"/>
                                         </constraints>
@@ -740,7 +743,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please sign in for Favorites and Settings " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtj-RY-DVe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please sign in for Favorites and Settings " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtj-RY-DVe">
                                 <rect key="frame" x="33" y="306" width="309" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -749,11 +752,6 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="qtj-RY-DVe"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile" selectedImage="Profile" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" title="PROFILE" id="LML-aU-yaN">

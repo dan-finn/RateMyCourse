@@ -35,7 +35,7 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
         theCollectionView.collectionViewLayout = layout
         self.theCollectionView.reloadData()
         
-        theCollectionView.backgroundColor = UIColor.lightGray
+
         
         print("scanning for reviews with code \(incomingCourseCode)")
         // Do any additional setup after loading the view.
@@ -87,30 +87,21 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
         
         let commentsLabel = cell.viewWithTag(COMMENTS_LABEL_TAG) as! UILabel
         
+        if (review.comments != "Insert comments... (optional)"){
         commentsLabel.text = review.comments
+        } else {
+            commentsLabel.text = "No comments provided"
+        }
         
         overallLabel.text = String(review.overall)
         overallDisplayView.color = getColorFromValue(value: review.overall)
         overallDisplayView.value = overallAsFloat
         
-        
-        
-        
-        
-        /*let professorLabel = cell.viewWithTag(1) as! UILabel
-        let overallLabel = cell.viewWithTag(2) as! UILabel
-        let gradingLabel = cell.viewWithTag(3) as! UILabel
-        let workloadLabel = cell.viewWithTag(4) as! UILabel*/
-        
-        /*professorLabel.text = review.professors
-        overallLabel.text = "Overall: \(String(review.overall))"
-        gradingLabel.text = "Grading: \(String(review.grading))"
-        workloadLabel.text = "Workload: \(String(review.workload))"*/
-        
         cell.backgroundColor = UIColor(hue: 0.5611, saturation: 0.33, brightness: 0.96, alpha: 1.0)
         
         cell.contentView.layer.borderColor = UIColor.black.cgColor
-        cell.contentView.layer.borderWidth = 5
+        cell.contentView.layer.borderWidth = 3
+        cell.contentView.layer.cornerRadius = 2
         
         return cell
     }

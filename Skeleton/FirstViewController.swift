@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UISearchBarDelegate {
 
     
     @IBOutlet weak var schoolTextField: UITextField!
@@ -23,8 +23,8 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var schoolPickerData = ["All", "ArtSci","Engineering","Olin"]
     
     var allData = ["Select a School", "All"]
-    var artSciData = ["Art class", "Science class"]
     var engineeringData: [String] = []
+    var artSciData: [String] = []
     var olinData = ["Accounting", "Finance"]
     var departmentPickerData: [String] = []
     let mapper = courseToDeptMapper()
@@ -37,7 +37,9 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        searchBar.delegate = self
         engineeringData = mapper.engineeringDeptNameArray
+        artSciData = mapper.artSciDeptNameArray
         self.departmentPickerData = allData
         schoolPicker.dataSource = self
         schoolPicker.delegate = self
@@ -168,6 +170,7 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             let searchText = self.searchBar.text
             let destVC = segue.destination as! ResultsView
             destVC.querySent = searchText!
+
             switch(self.schoolTextField.text!){
             case "All" :
                 destVC.focuserSent = ""
@@ -186,12 +189,22 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             
             }
             
-            if (self.deptTextField.text != "ALL" && self.deptTextField.text != "Select a School" && self.deptTextField.text != ""){
+            
+            
+            if deptTextField.text != nil {
+                print("failing in here")
+            if (self.deptTextField.text != "All" && self.deptTextField.text != "Select a School" && self.deptTextField.text != ""){
+                print(self.deptTextField.text!)
                 destVC.focuserSent = mapper.getCodeFromDeptName(name: self.deptTextField.text!)
+            }
             }
             
             
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        performSegue(withIdentifier: "toSearchResultsView", sender: nil)
     }
 
 

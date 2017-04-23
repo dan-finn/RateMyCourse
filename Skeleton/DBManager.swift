@@ -87,7 +87,7 @@ class DBManager {
         // block until the fetch is complete
         while(!fetchComplete){}
         return fetchedUser
-
+        
         
     }
     
@@ -130,10 +130,12 @@ class DBManager {
         
         switch filter {
         case .title:
-            if focuser != "" {
-            scanExpression.filterExpression = "contains(Title, :val) AND begins_with(Code, :val1)"
-            } else {
-            scanExpression.filterExpression = "contains(Title, :val)"
+            if focuser != "" && query != "" {
+                scanExpression.filterExpression = "contains(Title, :val) AND begins_with(Code, :val1)"
+            } else if query != "" {
+                scanExpression.filterExpression = "contains(Title, :val)"
+            } else if focuser != "" {
+                scanExpression.filterExpression = "begins_with(Code, :val1)"
             }
             break
         case .code:
@@ -146,10 +148,12 @@ class DBManager {
             scanExpression.filterExpression = "Code BEGINS :val"
         }
         
-        if focuser != "" {
-        scanExpression.expressionAttributeValues = [":val": query, ":val1": focuser]
-        } else {
+        if focuser != "" && query != ""{
+            scanExpression.expressionAttributeValues = [":val": query, ":val1": focuser]
+        } else if query != ""{
             scanExpression.expressionAttributeValues = [":val": query]
+        } else if focuser != "" {
+            scanExpression.expressionAttributeValues = [":val1": focuser]
         }
         
         dbMapper?.scan(Course.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
@@ -189,8 +193,8 @@ class DBManager {
         })
         while (!fetched){}
         return scanResults
-
-    
+        
+        
     }
     
     func scanReviews(code: String) -> [Review]? {
@@ -213,7 +217,7 @@ class DBManager {
         })
         while (!fetched){}
         return scanResults
-    
+        
     }
     
     func addCourse(course: Course) -> Bool {
@@ -259,7 +263,7 @@ class DBManager {
         })
         
         return (success != nil)
-
+        
     }
     
     
@@ -298,7 +302,7 @@ class DBManager {
         while(!fetchComplete){}
         return grabbedReview
         
-    
+        
     }
     
     func getFavorite(code: String, user: User) -> Favorite? {
@@ -321,10 +325,10 @@ class DBManager {
         // block until the fetch is complete
         while(!fetchComplete){}
         return grabbedFavorite
-
-    
+        
+        
     }
-
+    
     
     
 }
