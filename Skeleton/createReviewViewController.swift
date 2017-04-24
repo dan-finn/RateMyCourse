@@ -134,7 +134,12 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         grading = Int(gradingDifSlider.value)
         workload = Int(workloadSlider.value)
         
-        if (overall == 0 || grading == 0 || workload == 0){
+        if (overall == 0 || grading == 0 || workload == 0 || profTextField.text! == ""){
+            let alertControl = UIAlertController(title: "ERROR", message: "Please fill out all fields", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "OKAY", style: .default, handler: nil)
+            alertControl.addAction(alertAction)
+            present(alertControl, animated: true, completion: nil)
             return
         }
         

@@ -13,6 +13,7 @@ class reviewDetailViewController: UIViewController {
     var incomingData = ""
     let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
     
+    @IBOutlet weak var editBtn: UIBarButtonItem!
     @IBOutlet weak var commentsTextView: UITextView!
     @IBOutlet weak var workloadDisplayView: DisplayView!
     @IBOutlet weak var workloadVal: UILabel!
@@ -24,11 +25,15 @@ class reviewDetailViewController: UIViewController {
     @IBOutlet weak var reviewView: UIView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var gradingDisplayView: DisplayView!
+    var oldBtn: UIBarButtonItem! = UIBarButtonItem()
+    var courseCode = ""
+    var hasLoaded = false
     override func viewDidLoad() {
         super.viewDidLoad()
         commentsTextView.isEditable = false
         commentsTextView.text = ""
-        
+        oldBtn = editBtn
+        navigationItem.rightBarButtonItem = nil
         commentsTextView.layer.borderWidth = 2
         commentsTextView.layer.cornerRadius = 5
         commentsTextView.layer.borderColor = UIColor(hue: 0.55, saturation: 1, brightness: 0.97, alpha: 1.0).cgColor
@@ -36,8 +41,7 @@ class reviewDetailViewController: UIViewController {
         self.spinner.isHidden = false
         self.spinner.startAnimating()
         getAndSetData()
-        
-        
+       
         
         // Do any additional setup after loading the view.
     }
@@ -56,7 +60,22 @@ class reviewDetailViewController: UIViewController {
             
             
             guard let targetCourse = self.dbAccessor.getCourse(courseCode: courseCode) else {self.dismiss(animated: true, completion: nil); return}
-            guard let targetReview = self.dbAccessor.getReview(code: courseCode, user_id: userID) else {return}
+            guard let targetReview = self.dbAccessor.getReview(code: courseCode, user_id: userID) else {self.dismiss(animated: true, completion: nil); return}
+            
+            if (UserDefaults.standard.bool(forKey: "rmcSignedIn")){
+                print("here1")
+
+                if let curUser = self.dbAccessor.getUser(Username: UserDefaults.standard.string(forKey: "rmcUsername")!) {
+                    print("here2")
+                    if curUser.userID == targetReview.user_id {
+                        DispatchQueue.main.async {
+                            print("here")
+                            self.navigationItem.rightBarButtonItem = self.oldBtn
+                            self.courseCode = targetCourse.Code
+                        }
+                    }
+                }
+            }
             
             DispatchQueue.main.async {
                 self.titleLabel.text = targetCourse.Title
@@ -101,6 +120,20 @@ class reviewDetailViewController: UIViewController {
         
         return UIColor.green
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEditReview"{
+            let destVC = segue.destination as! createReviewViewController
+            destVC.incomingCourseCode = self.courseCode
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (hasLoaded){
+        self.viewDidLoad()
+        }
+        hasLoaded = true
     }
 
     

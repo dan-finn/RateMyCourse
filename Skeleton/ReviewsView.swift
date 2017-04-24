@@ -24,7 +24,7 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
     var searchResults = [Review]()
-
+    var hasLoaded = false
     @IBOutlet weak var theCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,10 +142,12 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (self.reviews.count == 0){
+        if (self.reviews.count == 0 || hasLoaded == true){
+            reviews = []
             getResults()
         }
         theCollectionView.reloadData()
+        hasLoaded = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

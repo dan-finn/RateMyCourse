@@ -20,6 +20,7 @@ class courseDetailViewController: UIViewController {
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var descriptionArea: UITextView!
     
+    @IBOutlet weak var favoriteBtnView: UIView!
     @IBOutlet weak var favoriteBtn: UIButton!
     
     
