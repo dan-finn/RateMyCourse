@@ -22,10 +22,18 @@ class courseDetailViewController: UIViewController {
     
     @IBOutlet weak var favoriteBtnView: UIView!
     @IBOutlet weak var favoriteBtn: UIButton!
+    @IBOutlet weak var reviewBtnView: UIView!
+    @IBOutlet weak var reviewBtn: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        favoriteBtnView.layer.backgroundColor = UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0).cgColor
+        
+        reviewBtnView.layer.backgroundColor = UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0).cgColor
+        
+        favoriteBtn.setTitleColor(UIColor.white, for: .normal)
+        reviewBtn.setTitleColor(UIColor.white, for: .normal)
         descriptionArea.isEditable = false
         print(incomingCourseCode)
         self.titleLabel.preferredMaxLayoutWidth = self.view.frame.width

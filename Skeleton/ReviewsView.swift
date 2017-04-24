@@ -142,7 +142,7 @@ class ReviewsView: UIViewController, UICollectionViewDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (self.reviews.count == 0 || hasLoaded == true){
+        if (self.reviews.count == 0){
             reviews = []
             getResults()
         }

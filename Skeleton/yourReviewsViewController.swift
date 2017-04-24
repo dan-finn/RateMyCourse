@@ -19,6 +19,7 @@ class yourReviewsViewController: UIViewController, UICollectionViewDataSource {
     var reviews: [Review] = []
     var hasLoaded = false
     
+    @IBOutlet weak var instructionsLabel: UILabel!
     //@IBOutlet weak var noReviewsLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     let dbAccessor = DBManager(poolID: "us-east-1:63f21831-90a5-433e-bcee-4ece294731bd")
@@ -63,8 +64,9 @@ class yourReviewsViewController: UIViewController, UICollectionViewDataSource {
                     self.spinner.isHidden = true
                     
                     if (self.reviews.count <= 0){
-                       // self.noReviewsLabel.isHidden = false
+                       self.instructionsLabel.isHidden = false
                     } else {
+                        self.instructionsLabel.isHidden = true
                         self.theCollectionView.isHidden = false
                         self.theCollectionView.reloadData()
                     }

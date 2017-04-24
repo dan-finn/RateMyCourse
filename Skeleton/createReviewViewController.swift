@@ -39,6 +39,7 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         titleLabel.text = incomingCourseTitle
         reviewTextView.delegate = self
         reviewTextView.text = placeHolderText
@@ -224,6 +225,10 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
         
         
     
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        view.endEditing(true)
     }
 
     /*

@@ -16,6 +16,8 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var schoolPicker: UIPickerView!
     @IBOutlet weak var departmentPicker: UIPickerView!
+    @IBOutlet weak var searchBtnView: UIView!
+    @IBOutlet weak var searchBtn: UIButton!
     
     @IBOutlet weak var deptTextField: UITextField!
     var testPicker: UIPickerView! = UIPickerView()
@@ -25,7 +27,7 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var allData = ["Select a School", "All"]
     var engineeringData: [String] = []
     var artSciData: [String] = []
-    var olinData = ["Accounting", "Finance"]
+    var olinData: [String] = []
     var departmentPickerData: [String] = []
     let mapper = courseToDeptMapper()
     
@@ -36,10 +38,24 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        departmentPicker.layer.borderColor = UIColor(hue: 0.55, saturation: 1, brightness: 0.97, alpha: 1.0).cgColor
+        departmentPicker.layer.borderWidth = 3
+        departmentPicker.layer.cornerRadius = 10
+        
+        schoolPicker.layer.borderColor = UIColor(hue: 0.55, saturation: 1, brightness: 0.97, alpha: 1.0).cgColor
+
+        schoolPicker.layer.borderWidth = 3
+        schoolPicker.layer.cornerRadius = 10
+
+        searchBtnView.layer.backgroundColor = UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0).cgColor
+        
+        searchBtn.setTitleColor(UIColor.white, for: .normal)
+        
         // Do any additional setup after loading the view, typically from a nib.
         searchBar.delegate = self
         engineeringData = mapper.engineeringDeptNameArray
         artSciData = mapper.artSciDeptNameArray
+        olinData = mapper.olinDeptNameArray
         self.departmentPickerData = allData
         schoolPicker.dataSource = self
         schoolPicker.delegate = self
@@ -53,6 +69,7 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         schoolPicker.isHidden = true
         departmentPicker.isHidden = true
         schoolTextField.text = schoolPickerData[0]
+        deptTextField.text = "All"
         
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(singleTap)
@@ -145,7 +162,7 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             }
             // IMPORTANT reload the data on the item picker
         departmentPicker.reloadAllComponents()
-        
+        self.searchBtnView.isHidden = false
         
     }
     
@@ -154,13 +171,14 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         if(textField == self.view.viewWithTag(1) as! UITextField) {
         departmentPicker.isHidden = true
         schoolPicker.isHidden = false
+
         }
         
         if (textField == self.view.viewWithTag(2) as! UITextField){
             schoolPicker.isHidden = true
             departmentPicker.isHidden = false
         }
-        
+        self.searchBtnView.isHidden = true
         return false
     }
     

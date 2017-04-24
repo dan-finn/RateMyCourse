@@ -23,6 +23,8 @@
 		37BAADFC1EAD4C30000625D4 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BAADFB1EAD4C30000625D4 /* DisplayView.swift */; };
 		37BAADFE1EAD639B000625D4 /* reviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BAADFD1EAD639B000625D4 /* reviewDetailViewController.swift */; };
 		37BAAE001EAD7222000625D4 /* yourReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BAADFF1EAD7222000625D4 /* yourReviewsViewController.swift */; };
+		37BAAE021EAD8993000625D4 /* changePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BAAE011EAD8993000625D4 /* changePasswordViewController.swift */; };
+		37BAAE041EAD8E94000625D4 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BAAE031EAD8E94000625D4 /* settingsViewController.swift */; };
 		611A84491E9ADFC20058891D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A84481E9ADFC20058891D /* AppDelegate.swift */; };
 		611A844B1E9ADFC20058891D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A844A1E9ADFC20058891D /* FirstViewController.swift */; };
 		611A844D1E9ADFC20058891D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A844C1E9ADFC20058891D /* SecondViewController.swift */; };
@@ -67,6 +69,8 @@
 		37BAADFB1EAD4C30000625D4 /* DisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		37BAADFD1EAD639B000625D4 /* reviewDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reviewDetailViewController.swift; sourceTree = "<group>"; };
 		37BAADFF1EAD7222000625D4 /* yourReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yourReviewsViewController.swift; sourceTree = "<group>"; };
+		37BAAE011EAD8993000625D4 /* changePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changePasswordViewController.swift; sourceTree = "<group>"; };
+		37BAAE031EAD8E94000625D4 /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		611A84451E9ADFC20058891D /* Skeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		611A84481E9ADFC20058891D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		611A844A1E9ADFC20058891D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				37BAADFB1EAD4C30000625D4 /* DisplayView.swift */,
 				37BAADFD1EAD639B000625D4 /* reviewDetailViewController.swift */,
 				37BAADFF1EAD7222000625D4 /* yourReviewsViewController.swift */,
+				37BAAE011EAD8993000625D4 /* changePasswordViewController.swift */,
+				37BAAE031EAD8E94000625D4 /* settingsViewController.swift */,
 			);
 			path = Skeleton;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				371DE5421EAC1D1300D0184C /* addCourseViewController.swift in Sources */,
 				371DE53C1EABF6C400D0184C /* Favorite.swift in Sources */,
 				376B4E4D1E9C3C2100D7DDC7 /* Course.swift in Sources */,
+				37BAAE021EAD8993000625D4 /* changePasswordViewController.swift in Sources */,
 				3700C1731EA94EFB00EC5FF3 /* Review.swift in Sources */,
 				3707CDC61EAA9B3E007D4DBC /* signInViewController.swift in Sources */,
 				376B4E4B1E9C3BBA00D7DDC7 /* DBManager.swift in Sources */,
@@ -405,6 +412,7 @@
 				611A844B1E9ADFC20058891D /* FirstViewController.swift in Sources */,
 				376B4E511E9C49EF00D7DDC7 /* courseDetailViewController.swift in Sources */,
 				371DE53A1EABF17600D0184C /* courseToDeptMapper.swift in Sources */,
+				37BAAE041EAD8E94000625D4 /* settingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

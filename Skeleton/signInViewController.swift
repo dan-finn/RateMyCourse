@@ -143,6 +143,9 @@ class signInViewController: UIViewController {
     
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        view.endEditing(true)
+    }
     
     /*
     // MARK: - Navigation
