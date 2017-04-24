@@ -86,12 +86,12 @@ class reviewDetailViewController: UIViewController {
                 
                 self.gradingVal.text = String(targetReview.grading)
                 self.gradingDisplayView.value = CGFloat(Double(targetReview.grading) / 10.0)
-                self.gradingDisplayView.color = self.getColorFromValue(value: targetReview.grading)
+                self.gradingDisplayView.color = self.getColorFromValue(value: 10-targetReview.grading)
                 
                 self.workloadVal.text = String(targetReview.workload)
                 self.workloadDisplayView.value = CGFloat(Double(targetReview.workload) / 10.0)
                 
-                self.workloadDisplayView.color = self.getColorFromValue(value: targetReview.workload)
+                self.workloadDisplayView.color = self.getColorFromValue(value: (10-targetReview.workload))
                 
                 if targetReview.comments != "Insert comments... (optional)"{
                     self.commentsTextView.text = targetReview.comments

@@ -77,11 +77,7 @@ class addCourseViewController: UIViewController, UITextViewDelegate, UITextField
         
         let codePattern:String = "\\[A-Z]{1}\\d{2}\\s\\w*\\s{0,}\\w*\\s\\d{3,4}\\w{0,}"
         
-        let regex  = try! NSRegularExpression(pattern: codePattern, options: [])
-        let codeNS = code as NSString
-        let results = regex.numberOfMatches(in: code, options: [], range: NSMakeRange(0, codeNS.length))
-        
-        
+
         if dbAccessor.getCourse(courseCode: code) != nil{
             let alertController = UIAlertController(title: "ERROR", message: "Course already exists!", preferredStyle: .alert)
             let confAction = UIAlertAction(title: "OKAY", style: .default, handler: nil)

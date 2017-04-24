@@ -14,6 +14,7 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     
     var placeHolderText = "Insert comments... (optional)"
     
+    @IBOutlet weak var theScrollView: UIScrollView!
     var incomingCourseTitle = ""
     var incomingCourseCode = ""
     var userHasSubmittedPrevReview = false
@@ -39,7 +40,7 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         titleLabel.text = incomingCourseTitle
         reviewTextView.delegate = self
         reviewTextView.text = placeHolderText
