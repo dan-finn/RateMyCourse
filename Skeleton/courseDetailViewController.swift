@@ -54,6 +54,25 @@ class courseDetailViewController: UIViewController {
                 
             }
         }
+            
+            if let pulledReviews = self.dbAccessor.scanReviews(code: self.incomingCourseCode){
+                var overallTotal = 0
+                var gradingTotal = 0
+                var workloadTotal = 0
+                
+                for review in pulledReviews {
+                    overallTotal += review.overall
+                    gradingTotal += review.grading
+                    workloadTotal += review.workload
+                }
+                
+                let averageOverall = Double(overallTotal) / Double(pulledReviews.count)
+                let averageGrading = Double(gradingTotal) / Double(pulledReviews.count)
+                let averageWorkload = Double(workloadTotal) / Double(pulledReviews.count)
+                
+                
+                
+            }
         
             if (UserDefaults.standard.bool(forKey: "rmcSignedIn")){
                 if let curUser = self.dbAccessor.getUser(Username: UserDefaults.standard.string(forKey: "rmcUsername")!) {

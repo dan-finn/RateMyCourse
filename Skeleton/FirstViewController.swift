@@ -24,7 +24,7 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     
     var schoolPickerData = ["All", "ArtSci","Engineering","Olin"]
     
-    var allData = ["Select a School", "All"]
+    var allData = ["All"]
     var engineeringData: [String] = []
     var artSciData: [String] = []
     var olinData: [String] = []
