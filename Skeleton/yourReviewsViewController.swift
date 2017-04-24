@@ -145,6 +145,9 @@ class yourReviewsViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (self.reviews.count == 0 || hasLoaded == true){
+            self.theCollectionView.isHidden = true
+            self.spinner.isHidden = false
+            self.spinner.startAnimating()
             reviews = []
             getResults()
         }

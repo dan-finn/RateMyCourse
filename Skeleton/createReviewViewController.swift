@@ -231,6 +231,10 @@ class createReviewViewController: UIViewController, UITextViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         view.endEditing(true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewDidLoad()
+    }
 
     /*
     // MARK: - Navigation

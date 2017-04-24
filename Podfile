@@ -26,5 +26,6 @@ target :'Skeleton' do
     pod 'AWSSNS'
     pod 'AWSSQS'
     pod 'CryptoSwift'
+    pod 'KYCircularProgress'
 
 end

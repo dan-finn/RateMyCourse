@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KYCircularProgress
 
 class courseDetailViewController: UIViewController {
     
@@ -25,9 +26,30 @@ class courseDetailViewController: UIViewController {
     @IBOutlet weak var reviewBtnView: UIView!
     @IBOutlet weak var reviewBtn: UIButton!
     
+    @IBOutlet weak var overallCircleView: KYCircularProgress!
+    @IBOutlet weak var gradingCircleView: KYCircularProgress!
+    @IBOutlet weak var workloadCircleView: KYCircularProgress!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        overallCircleView.showGuide = true
+        gradingCircleView.showGuide = true
+        workloadCircleView.showGuide = true
+        
+        overallCircleView.startAngle = 3*Double.pi / 2.0
+        gradingCircleView.startAngle = 3*Double.pi / 2.0
+        workloadCircleView.startAngle = 3*Double.pi / 2.0
+        
+        overallCircleView.endAngle = 3*Double.pi / 2.0
+        gradingCircleView.endAngle = 3*Double.pi / 2.0
+        workloadCircleView.endAngle = 3*Double.pi / 2.0
+        
+        overallCircleView.guideColor = UIColor.darkGray
+        gradingCircleView.guideColor = UIColor.darkGray
+        workloadCircleView.guideColor = UIColor.darkGray
+        
         favoriteBtnView.layer.backgroundColor = UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0).cgColor
         
         reviewBtnView.layer.backgroundColor = UIColor(hue: 0.5778, saturation: 0.93, brightness: 0.9, alpha: 1.0).cgColor
@@ -66,11 +88,33 @@ class courseDetailViewController: UIViewController {
                     workloadTotal += review.workload
                 }
                 
+                if pulledReviews.count != 0{
+                
                 let averageOverall = Double(overallTotal) / Double(pulledReviews.count)
                 let averageGrading = Double(gradingTotal) / Double(pulledReviews.count)
                 let averageWorkload = Double(workloadTotal) / Double(pulledReviews.count)
                 
-                
+                DispatchQueue.main.async {
+                    let overallColor = self.getColorFromValue(value: Int(averageOverall))
+                    self.overallCircleView.colors = [overallColor, overallColor, overallColor]
+                    self.overallCircleView.progress = averageOverall / 10.0
+                    
+                    let gradingColor = self.getColorFromValue(value: 10-Int(averageGrading))
+                    
+                    self.gradingCircleView.colors = [gradingColor, gradingColor, gradingColor]
+                    
+                    self.gradingCircleView.progress = averageGrading / 10.0
+                    
+                    let workloadColor = self.getColorFromValue(value: 10-Int(averageWorkload))
+                    
+                    self.workloadCircleView.colors = [workloadColor, workloadColor, workloadColor]
+                    
+                    self.workloadCircleView.progress = averageWorkload / 10.0
+                    
+                    
+                    
+                 }
+                }
                 
             }
         
@@ -140,6 +184,10 @@ class courseDetailViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewDidLoad()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newReviewSegue" {
             print("we still got here just didnt do it")
@@ -162,6 +210,19 @@ class courseDetailViewController: UIViewController {
         
         return true
     }
+    
+    func getColorFromValue(value: Int) -> UIColor {
+        if (value < 4){
+            return UIColor.red
+        }
+        
+        if (value < 7){
+            return UIColor(hue: 0.1389, saturation: 1, brightness: 1, alpha: 1.0)
+        }
+        return UIColor.green
+        
+    }
+
 
     /*
     // MARK: - Navigation

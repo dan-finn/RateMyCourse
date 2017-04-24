@@ -43,6 +43,7 @@ PODS:
   - AWSSQS (2.5.5):
     - AWSCore (= 2.5.5)
   - CryptoSwift (0.6.8)
+  - KYCircularProgress (1.0.0)
 
 DEPENDENCIES:
   - AWSAutoScaling
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - AWSSNS
   - AWSSQS
   - CryptoSwift
+  - KYCircularProgress
 
 SPEC CHECKSUMS:
   AWSAutoScaling: 9760e91ecdd3a35c4e396161d43f10f4dd07f78b
@@ -92,7 +94,8 @@ SPEC CHECKSUMS:
   AWSSNS: b1ea92510e6597b15612a9fa44c0e8fc662c8dc6
   AWSSQS: 33cdcd2dedf2ada06434dad7a57fd9b56c02b6d3
   CryptoSwift: f21ea03ed3a94e79d241648ce26652cd4810508a
+  KYCircularProgress: e83d5346247c917182b451c6357fd96b3c3d71b6
 
-PODFILE CHECKSUM: 45b24158c9811c049b08e53ad03f4174b8c5e268
+PODFILE CHECKSUM: b3c22eb531f98c4221d17e346b6d2a85bec48813
 
 COCOAPODS: 1.2.0
